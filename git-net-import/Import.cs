@@ -39,10 +39,10 @@ namespace gitnetimport {
                                                        + "\x0a"));
                 writeData(output, utf8.GetBytes(commit.message));
                 foreach (var path in commit.deletedFiles) {
-                    output.Write(ascii.GetBytes(string.Format("filedelete {0}\x0a", QuotePath(path))));
+                    output.Write(ascii.GetBytes(string.Format("D {0}\x0a", QuotePath(path))));
                 }
                 foreach (var file in commit.changedFiles) {
-                    output.Write(ascii.GetBytes(string.Format("filemodify 100644 inline {0}\x0a", QuotePath(file.path))));
+                    output.Write(ascii.GetBytes(string.Format("M 100644 inline {0}\x0a", QuotePath(file.path))));
                     writeData(output, file.content);
                 }
             }
