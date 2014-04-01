@@ -19,7 +19,7 @@ namespace gitnetimport {
             public string committerName;
             public string committerEmail;
             public DateTime committerDateTime;
-            public TimeZone committerZone;
+            public DateTimeOffset committerZone;
             public string message;
             public IEnumerable<ChangedFile> changedFiles;
             public IEnumerable<string> deletedFiles;
