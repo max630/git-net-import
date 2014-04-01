@@ -3,12 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "git-net-import", "git-net-import\git-net-import.csproj", "{958027AE-383C-4EF9-AD71-98E2401BB137}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "git-net-import-test", "git-net-import-test\git-net-import-test.csproj", "{7C486120-8E25-41E3-9526-79A30343B54F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C486120-8E25-41E3-9526-79A30343B54F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C486120-8E25-41E3-9526-79A30343B54F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C486120-8E25-41E3-9526-79A30343B54F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C486120-8E25-41E3-9526-79A30343B54F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{958027AE-383C-4EF9-AD71-98E2401BB137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{958027AE-383C-4EF9-AD71-98E2401BB137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{958027AE-383C-4EF9-AD71-98E2401BB137}.Release|Any CPU.ActiveCfg = Release|Any CPU
