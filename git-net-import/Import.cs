@@ -37,15 +37,35 @@ namespace gitnetimport {
                                                        + " <" + commit.committerEmail + "> "
                                                        + FormatDate(commit.committerDateTime, commit.committerZone)
                                                        + "\x0a"));
-                
+                writeData(output, utf8.GetBytes(commit.message));
+                foreach (var path in commit.deletedFiles) {
+                    output.Write(ascii.GetBytes(string.Format("filedelete {0}\x0a", QuotePath(path))));
+                }
+                foreach (var file in commit.changedFiles) {
+                    output.Write(ascii.GetBytes(string.Format("filemodify 100644 inline {0}\x0a", QuotePath(file.path))));
+                    writeData(output, file.content);
+                }
             }
         }
         
-        public void writeDate(BinaryWriter output, byte[] data)
+        public void writeData(BinaryWriter output, byte[] data)
         {
             output.Write(ascii.GetBytes(string.Format("data {0}\x0a", data.Length)));
             output.Write(data);
             output.Write(ascii.GetBytes("\x0a"));
+        }
+        
+        public string QuotePath(string path)
+        {
+            var w = new StringWriter();
+            w.Write("\"");
+            foreach (var c in path) {
+                if (c == '\\' || c == '\x0a' || c == '\"')
+                    w.Write("\\");
+                w.Write(c);
+            }
+            w.Write("\"");
+            return w.ToString();
         }
         
         public static string FormatDate(DateTime dateTime, TimeZone timeZone)
