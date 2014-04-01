@@ -20,12 +20,37 @@ namespace gitnetimport {
             public string committerEmail;
             public DateTime committerDateTime;
             public TimeZone committerZone;
+            public string message;
             public IEnumerable<ChangedFile> changedFiles;
             public IEnumerable<string> deletedFiles;
         }
-    
-        public static void Run(Stream output, IEnumerable<Commit> commits)
+
+        System.Text.UTF8Encoding utf8 = new System.Text.UTF8Encoding();
+        System.Text.ASCIIEncoding ascii = new System.Text.ASCIIEncoding();
+           
+        public void Run(BinaryWriter output, string branch, IEnumerable<Commit> commits)
         {
+            foreach (var commit in commits) {
+                output.Write(ascii.GetBytes("commit refs/heads/" + branch + "\x0a"));
+                output.Write(utf8.GetBytes("committer" + (commit.committerName.Length > 0?" ":"")
+                                                       + commit.committerName
+                                                       + " <" + commit.committerEmail + "> "
+                                                       + FormatDate(commit.committerDateTime, commit.committerZone)
+                                                       + "\x0a"));
+                
+            }
+        }
+        
+        public void writeDate(BinaryWriter output, byte[] data)
+        {
+            output.Write(ascii.GetBytes(string.Format("data {0}\x0a", data.Length)));
+            output.Write(data);
+            output.Write(ascii.GetBytes("\x0a"));
+        }
+        
+        public static string FormatDate(DateTime dateTime, TimeZone timeZone)
+        {
+            return "";
         }
     }
 }

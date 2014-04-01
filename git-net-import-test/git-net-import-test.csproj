@@ -36,4 +36,10 @@
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\git-net-import\git-net-import.csproj">
+      <Project>{958027AE-383C-4EF9-AD71-98E2401BB137}</Project>
+      <Name>git-net-import</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
