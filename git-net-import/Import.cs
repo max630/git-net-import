@@ -75,9 +75,9 @@ namespace gitnetimport {
             return w.ToString();
         }
         
-        public static string FormatDate(DateTime dateTime, TimeZone timeZone)
+        public static string FormatDate(DateTime dateTime, DateTimeOffset tzOffset)
         {
-            return "";
+            return dateTime.ToString("ddd MMM d HH:mm:ss yyyy") + " " + tzOffset.ToString("zzz").Replace(":", "");
         }
     }
 }
