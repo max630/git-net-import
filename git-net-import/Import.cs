@@ -12,7 +12,7 @@ namespace gitnetimport {
     public class Import {
         public struct ChangedFile {
             public string path;
-            public ICollection<byte> content;
+            public byte[] content;
         }
     
         public struct Commit {
@@ -55,13 +55,6 @@ namespace gitnetimport {
             output.Write(ascii.GetBytes("\x0a"));
         }
 
-        public void writeData(BinaryWriter output, ICollection<byte> data)
-        {
-            byte[] dataArray = new byte[data.Count];
-            data.CopyTo(dataArray, 0);
-            writeData(output, dataArray);
-        }
-                        
         public string QuotePath(string path)
         {
             var w = new StringWriter();
