@@ -27,6 +27,7 @@ namespace gitnetimport {
 
         System.Text.UTF8Encoding utf8 = new System.Text.UTF8Encoding();
         System.Text.ASCIIEncoding ascii = new System.Text.ASCIIEncoding();
+        IFormatProvider international = System.Globalization.CultureInfo.InvariantCulture;
            
         public void Run(BinaryWriter output, string branch, IEnumerable<Commit> commits)
         {
@@ -68,9 +69,9 @@ namespace gitnetimport {
             return w.ToString();
         }
         
-        public static string FormatDate(DateTime dateTime, DateTimeOffset tzOffset)
+        public string FormatDate(DateTime dateTime, DateTimeOffset tzOffset)
         {
-            return dateTime.ToString("ddd MMM d HH:mm:ss yyyy") + " " + tzOffset.ToString("zzz").Replace(":", "");
+            return dateTime.ToString("ddd MMM d HH:mm:ss yyyy", international) + " " + tzOffset.ToString("zzz", international).Replace(":", "");
         }
     }
 }
