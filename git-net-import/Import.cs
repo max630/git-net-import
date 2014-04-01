@@ -57,7 +57,7 @@ namespace gitnetimport {
 
         public void writeData(BinaryWriter output, ICollection<byte> data)
         {
-            byte[] dataArray = new byte[0];
+            byte[] dataArray = new byte[data.Count];
             data.CopyTo(dataArray, 0);
             writeData(output, dataArray);
         }
